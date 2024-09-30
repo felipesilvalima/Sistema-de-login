@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1); 
 
 namespace App\Http\Controllers;
 
@@ -12,9 +12,9 @@ class AuthController extends Controller
     public function auth(LoginRequest $request) 
     {
        
-        $credentials = $request->only('email', 'password');
+        $credenciais = $request->only('email', 'password');
 
-        if(Auth::attempt( $credentials)) {
+        if(Auth::attempt( $credenciais)) {
             $request->session()->regenerate();
             return redirect()->intended(route('dasboard.index'));
         }
